@@ -30,6 +30,10 @@ body {
     justify-content: space-around;
 }
 
+.action span {
+    color: cornflowerblue;
+}
+
 .reset {
     cursor: pointer;
 }
@@ -65,4 +69,5 @@ body {
 .o::after {
     content: '○';
     font-size: 200px;
+    color: cornflowerblue;
 }

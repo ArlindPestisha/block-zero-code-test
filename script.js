@@ -3,13 +3,19 @@ const activePlayer = document.querySelector('.active-player')
 const resetGame = document.querySelector('.reset')
 const gameSquares = document.querySelectorAll('.game-square')
 
+// game constants
+const xSymbol = '×'
+const oSymbol = '○'
 
 // game variables
-
 let gameIsLive = true;
 let xIsNext = true;
+let winner = null;
 
 //Functions
+const letterToSymbol = (letter) => letter === 'x' ? xSymbol : oSymbol
+ 
+
 const gameStatus = () => {
     const cell1 = gameSquares[0].classList[2]
     const cell2 = gameSquares[1].classList[2]
@@ -21,7 +27,18 @@ const gameStatus = () => {
     const cell8 = gameSquares[7].classList[2]
     const cell9 = gameSquares[8].classList[2]
 
-    console.log(cell1, cell2)
+    //console.log(cell1, cell2)
+
+    // Winner status
+    if (cell1 && cell1 === cell2 && cell1 === cell3) {
+        gameIsLive = false
+        winner = cell1
+        if (cell1 === 'x') {
+            activePlayer.innerHTML = `${letterToSymbol(cell1)} has won!`
+        } else {
+            activePlayer.innerHTML = `<span>${letterToSymbol(cell1)} has won!</span>`
+        }
+    }
 }
 
 // event Handlers
@@ -48,11 +65,7 @@ const handleSquareClick = (e) => {
     }
 }
 
-
-
-
 //event listeners
-
 resetGame.addEventListener('click', handleReset)
 
 for (const gameSquare of gameSquares) {
