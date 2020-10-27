@@ -9,6 +9,20 @@ const gameSquares = document.querySelectorAll('.game-square')
 let gameIsLive = true;
 let xIsNext = true;
 
+//Functions
+const gameStatus = () => {
+    const cell1 = gameSquares[0].classList[2]
+    const cell2 = gameSquares[1].classList[2]
+    const cell3 = gameSquares[2].classList[2]
+    const cell4 = gameSquares[3].classList[2]
+    const cell5 = gameSquares[4].classList[2]
+    const cell6 = gameSquares[5].classList[2]
+    const cell7 = gameSquares[6].classList[2]
+    const cell8 = gameSquares[7].classList[2]
+    const cell9 = gameSquares[8].classList[2]
+
+    console.log(cell1, cell2)
+}
 
 // event Handlers
 const handleReset = (e) => {
@@ -25,9 +39,11 @@ const handleSquareClick = (e) => {
     
     if (xIsNext) {
         classList.add('x')
+        gameStatus()
         xIsNext = !xIsNext
     } else {
         classList.add('o')
+        gameStatus()
         xIsNext= !xIsNext
     }
 }
