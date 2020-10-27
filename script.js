@@ -1,7 +1,7 @@
 //All the HTML elements
 const activePlayer = document.querySelector('.active-player')
 const resetGame = document.querySelector('.reset')
-const gameSquare = document.querySelectorAll('.game-square')
+const gameSquares = document.querySelectorAll('.game-square')
 
 
 // game variables
@@ -15,9 +15,15 @@ const handleReset = (e) => {
     console.log(e)
 }
 
-
+const handleSquareClick = (e) => {
+    console.log(e)
+}
 
 
 //event listeners
 
 resetGame.addEventListener('click', handleReset)
+
+for (const gameSquare of gameSquares) {
+    gameSquare.addEventListener('click', handleSquareClick)
+}
