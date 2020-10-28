@@ -14,7 +14,15 @@ let winner = null;
 
 //Functions
 const letterToSymbol = (letter) => letter === 'x' ? xSymbol : oSymbol
- 
+const handleWin = (letter) => {
+    gameIsLive = false
+    winner = cell1
+    if (cell1 === 'x') {
+        activePlayer.innerHTML = `${letterToSymbol(cell1)} has won!`
+    } else {
+        activePlayer.innerHTML = `<span>${letterToSymbol(cell1)} has won!</span>`
+    }
+ }
 
 const gameStatus = () => {
     const cell1 = gameSquares[0].classList[2]
@@ -31,13 +39,7 @@ const gameStatus = () => {
 
     // Winner status
     if (cell1 && cell1 === cell2 && cell1 === cell3) {
-        gameIsLive = false
-        winner = cell1
-        if (cell1 === 'x') {
-            activePlayer.innerHTML = `${letterToSymbol(cell1)} has won!`
-        } else {
-            activePlayer.innerHTML = `<span>${letterToSymbol(cell1)} has won!</span>`
-        }
+        
     }
 }
 
