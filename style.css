@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+
 }
 
 body {
@@ -10,11 +11,13 @@ body {
     justify-content: center;
 }
 
+/* Section for class tags*/
 .container {
     background: coral;
     border-radius: 20px;
     margin: 50px;
     padding: 50px;
+    max-width: auto;
 }
 
 .title {
@@ -25,10 +28,11 @@ body {
 
 .action {
     margin-top: 30px;
-    font-size: 21px;
+    font-size: 25px;
     display: flex;
     justify-content: space-around;
     height: 30px;
+    color: darkorchid;
 }
 
 .action span {
@@ -72,7 +76,7 @@ body {
     font-size: 200px;
     color: cornflowerblue;
 }
-
+ /* Adding Responsiveness*/
 @media only screen and (max-width: 1024px) {
     .grid {
         margin-top: 25px;

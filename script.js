@@ -60,9 +60,9 @@ const gameStatus = () => {
     } else {
         xIsNext = !xIsNext
         if (xIsNext) {
-            activePlayer.innerHTML = `${xSymbol} is next`
+            activePlayer.innerHTML = `${xSymbol} is next!`
         } else {
-            activePlayer.innerHTML = `<span>${oSymbol} is next</span>`
+            activePlayer.innerHTML = `<span>${oSymbol} is next!</span>`
         }
     }
 }    
