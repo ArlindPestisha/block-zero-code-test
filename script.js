@@ -16,54 +16,80 @@ let winner = null;
 const letterToSymbol = (letter) => letter === 'x' ? xSymbol : oSymbol
 const handleWin = (letter) => {
     gameIsLive = false
-    winner = cell1
-    if (cell1 === 'x') {
-        activePlayer.innerHTML = `${letterToSymbol(cell1)} has won!`
+    winner = letter
+    if (winner === 'x') {
+        activePlayer.innerHTML = `${letterToSymbol(winner)} has won!`
     } else {
-        activePlayer.innerHTML = `<span>${letterToSymbol(cell1)} has won!</span>`
+        activePlayer.innerHTML = `<span>${letterToSymbol(winner)} has won!</span>`
     }
  }
 
 const gameStatus = () => {
-    const cell1 = gameSquares[0].classList[2]
-    const cell2 = gameSquares[1].classList[2]
-    const cell3 = gameSquares[2].classList[2]
-    const cell4 = gameSquares[3].classList[2]
-    const cell5 = gameSquares[4].classList[2]
-    const cell6 = gameSquares[5].classList[2]
-    const cell7 = gameSquares[6].classList[2]
-    const cell8 = gameSquares[7].classList[2]
-    const cell9 = gameSquares[8].classList[2]
+    const cell1 = gameSquares[0].classList[1]
+    const cell2 = gameSquares[1].classList[1]
+    const cell3 = gameSquares[2].classList[1]
+    const cell4 = gameSquares[3].classList[1]
+    const cell5 = gameSquares[4].classList[1]
+    const cell6 = gameSquares[5].classList[1]
+    const cell7 = gameSquares[6].classList[1]
+    const cell8 = gameSquares[7].classList[1]
+    const cell9 = gameSquares[8].classList[1]
 
     //console.log(cell1, cell2)
 
     // Winner status
     if (cell1 && cell1 === cell2 && cell1 === cell3) {
-        
+        handleWin(cell1)
+    } else if (cell4 && cell4 === cell5 && cell4 === cell6) {
+        handleWin(cell4)
+    } else if (cell7 && cell7 === cell8 && cell7 === cell9) {
+        handleWin(cell7)
+    } else if (cell1 && cell1 === cell4 && cell1 === cell7) {
+        handleWin(cell1)
+    } else if (cell2 && cell2 === cell5 & cell2 === cell8) {
+        handleWin(cell2)
+    } else if (cell3 && cell3 === cell6 & cell3 === cell9) {
+        handleWin(cell3)
+    } else if (cell1 && cell1 === cell5 && cell1 === cell9) {
+        handleWin(cell1)
+    } else if (cell3 && cell3 === cell5 & cell3 === cell7) {
+        handleWin(cell3)
+    } else if (cell1 && cell2 && cell3 && cell4 && cell5 && cell6 && cell7 && cell8 && cell9) {
+        gameIsLive = false
+        activePlayer.innerHTML = 'Tie, play again!'
+    } else {
+        xIsNext = !xIsNext
+        if (xIsNext) {
+            activePlayer.innerHTML = `${xSymbol} is next`
+        } else {
+            activePlayer.innerHTML = `<span>${oSymbol} is next</span>`
+        }
     }
-}
-
+}    
 // event Handlers
 const handleReset = (e) => {
-    console.log(e)
+    xIsNext = true
+    activePlayer.innerHTML = `${xSymbol} is next`
+    winner = null
+    for (const gameSquare of gameSquares) {
+        gameSquare.classList.remove('x')
+        gameSquare.classList.remove('o')
+    }
 }
 
 const handleSquareClick = (e) => {
     const classList = e.target.classList
-    const location = classList[1]
     
-    if(classList[2] === 'x' || classList[2] === 'o'){
+    if(classList[1] === 'x' || classList[1] === 'o'){
         return
     }
     
     if (xIsNext) {
         classList.add('x')
         gameStatus()
-        xIsNext = !xIsNext
     } else {
         classList.add('o')
         gameStatus()
-        xIsNext= !xIsNext
     }
 }
 
