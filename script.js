@@ -46,13 +46,13 @@ const gameStatus = () => {
         handleWin(cell7)
     } else if (cell1 && cell1 === cell4 && cell1 === cell7) {
         handleWin(cell1)
-    } else if (cell2 && cell2 === cell5 & cell2 === cell8) {
+    } else if (cell2 && cell2 === cell5 && cell2 === cell8) {
         handleWin(cell2)
-    } else if (cell3 && cell3 === cell6 & cell3 === cell9) {
+    } else if (cell3 && cell3 === cell6 && cell3 === cell9) {
         handleWin(cell3)
     } else if (cell1 && cell1 === cell5 && cell1 === cell9) {
         handleWin(cell1)
-    } else if (cell3 && cell3 === cell5 & cell3 === cell7) {
+    } else if (cell3 && cell3 === cell5 && cell3 === cell7) {
         handleWin(cell3)
     } else if (cell1 && cell2 && cell3 && cell4 && cell5 && cell6 && cell7 && cell8 && cell9) {
         gameIsLive = false
@@ -67,7 +67,7 @@ const gameStatus = () => {
     }
 }    
 // event Handlers
-const handleReset = (e) => {
+const handleReset = () => {
     xIsNext = true
     activePlayer.innerHTML = `${xSymbol} is next`
     winner = null
